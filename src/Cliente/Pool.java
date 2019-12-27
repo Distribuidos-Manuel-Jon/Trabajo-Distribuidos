@@ -1,6 +1,9 @@
 package Cliente;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -22,6 +25,30 @@ public class Pool {
 			e.printStackTrace();
 		}
 		return (String) p.get(clave);
+	}
+	
+	public Pool() {
+		inici();
+	}
+	
+	public void inici() {
+	
+		Connection con = null;
+	    try {
+	      con =  DriverManager.getConnection(URL,USR,PWD);
+	      
+	    } catch (SQLException e) {
+		      e.printStackTrace();
+		    } finally {
+		    	try {
+		      if (con != null) {
+		          con.close();
+		      }
+		        } catch (SQLException ex) {
+		          ex.printStackTrace();
+		        }
+		      
+		    }
 	}
 	
 	

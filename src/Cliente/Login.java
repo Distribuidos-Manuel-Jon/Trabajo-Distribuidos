@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 
 import proyecto_nube.Filewalker;
 
-public class a extends JFrame {
+public class Login extends JFrame {
 
 	private File[] listado;
 
@@ -46,7 +46,7 @@ public class a extends JFrame {
 //		});
 //	}
 
-	public a(Socket s, ObjectInputStream obin, DataInputStream dis, DataOutputStream dos) {
+	public Login(Socket s, ObjectInputStream obin, DataInputStream dis, DataOutputStream dos) {
 		setBounds(100, 100, 400, 300);
 		getContentPane().setLayout(null);
 

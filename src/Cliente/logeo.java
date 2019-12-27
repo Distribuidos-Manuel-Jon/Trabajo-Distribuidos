@@ -1,38 +1,24 @@
 package Cliente;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
-import java.awt.event.ActionEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class logeo extends JFrame {
 
@@ -41,7 +27,6 @@ public class logeo extends JFrame {
 	public JPasswordField jpassClave;
 	private String clave;
 	private String usuario;
-	private File[] listado;
 	private boolean correcto1;
 	private JLabel lblNewLabel_2;
 
@@ -94,8 +79,6 @@ public class logeo extends JFrame {
 		JButton btnIngresar = new JButton("Iniciar Sesión");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String [] Arraylista = null;
-				int cont = 0;
 				char claveChar[] = jpassClave.getPassword();
 				clave = new String(claveChar);
 				usuario = txtUsuario.getText();
@@ -105,7 +88,6 @@ public class logeo extends JFrame {
 				Socket cliente = new Socket("localhost",6666);
 				DataInputStream dis = new DataInputStream(cliente.getInputStream());
 				DataOutputStream dos = new DataOutputStream(cliente.getOutputStream());
-				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 						ObjectInputStream obin = new ObjectInputStream(cliente.getInputStream());
 				
 					dos.writeUTF(usuario);
@@ -114,14 +96,8 @@ public class logeo extends JFrame {
 					correcto = dis.readBoolean();
 					correcto1=correcto;
 					if(b.login(usuario, clave) == 1) {
-						a md = new a(cliente,obin,dis,dos);
+						Login md = new Login(cliente,obin,dis,dos);
 						md.setVisible(true);
-					}
-				
-					if(correcto) {
-						a md = new a(cliente,obin,dis,dos);
-						md.setVisible(true);
-						
 						
 						
 					}else {
@@ -151,14 +127,15 @@ public class logeo extends JFrame {
 		separator.setBounds(170, 243, 0, -194);
 		contentPane.add(separator);
 		
-		JButton btnNewButton = new JButton("Registrar");
-		btnNewButton.setBounds(215, 85, 89, 23);
-		contentPane.add(btnNewButton);
+		JButton btnRegistrar = new JButton("Registrar");
+		btnRegistrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Registrar r = new Registrar();
+				r.setVisible(true);
+			}
+		});
+		btnRegistrar.setBounds(215, 85, 89, 23);
+		contentPane.add(btnRegistrar);
 	}
-	
-	public boolean getCorrecto() {
-		return this.correcto1;
-	}
-	
 	
 }
