@@ -39,7 +39,6 @@ public class Server {
 		File[] listado;
 
 
-
 		try (ServerSocket server = new ServerSocket(6666);) {
 			while (true) {
 				try (Socket cliente = server.accept();
