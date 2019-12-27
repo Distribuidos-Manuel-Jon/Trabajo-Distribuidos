@@ -38,21 +38,7 @@ public class Server {
 		File fich;
 		File[] listado;
 
-//		SSLServerSocket s;
-//		SSLServerSocketFactory sslSrvFact =	(SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
-//		try {
-//			s =(SSLServerSocket)sslSrvFact.createServerSocket(443);
-//			SSLSocket c = (SSLSocket)s.accept();
-//			DataOutputStream out = new DataOutputStream( c.getOutputStream());
-//			DataInputStream in = new DataInputStream(c.getInputStream());
-//			String uss = in.readUTF();
-//			System.out.println("usuario recibido: "+uss);
-//			String pas = in.readLine();
-//			if(uss.equals(us) && pas.equals(pa)) {
-//				out.writeBoolean(true);
-//			}else {
-//				out.writeBoolean(false);
-//			}
+
 
 		try (ServerSocket server = new ServerSocket(6666);) {
 			while (true) {
@@ -141,17 +127,5 @@ public class Server {
 		 */
 	}
 
-	public static void filtrarPorExtension(String path, String extension) {
 
-		try (Stream<Path> walk = Files.walk(Paths.get(path))) {
-
-			List<String> result = walk.map(x -> x.toString()).filter(f -> f.endsWith(extension))
-					.collect(Collectors.toList());
-
-			result.forEach(System.out::println);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 }
