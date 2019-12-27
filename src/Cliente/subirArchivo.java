@@ -40,33 +40,7 @@ public class subirArchivo extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//					new subirArchivo().setVisible(true);
-//				} catch (ClassNotFoundException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (InstantiationException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (IllegalAccessException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (UnsupportedLookAndFeelException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				
-//			}
-//		});
-//	}
 
-	/**
-	 * Create the frame.
-	 */
 
 	public subirArchivo(Socket s, DataInputStream dis, DataOutputStream dos) {
 		// initComponents();
@@ -123,6 +97,7 @@ public class subirArchivo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				subir(s, dis, dos);
+				dispose();
 			}
 		});
 		btnSubir.setBounds(312, 61, 89, 23);

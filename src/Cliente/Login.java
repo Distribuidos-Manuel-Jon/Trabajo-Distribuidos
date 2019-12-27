@@ -47,7 +47,7 @@ public class Login extends JFrame {
 		JLabel lblNewLabel = new JLabel("Archivos");
 		lblNewLabel.setBounds(10, 11, 49, 14);
 		getContentPane().add(lblNewLabel);
-		setMinimumSize(new Dimension(800,600));
+		setMinimumSize(new Dimension(500,300));
 
 		list = new List();
 		list.setBounds(10, 31, 350, 161);
@@ -62,6 +62,11 @@ public class Login extends JFrame {
 				int aux = list.getSelectedIndex();
 				System.out.println(aux);
 				descargar(aux, s, dis, dos);
+				String directorio = list.getItem(aux);
+				System.out.println(directorio);
+				Abrir a = new Abrir(directorio);
+				a.setVisible(true);
+				
 			}
 		});
 		btnNewButton.setBounds(250, 217, 109, 23);
@@ -79,29 +84,28 @@ public class Login extends JFrame {
 		});
 		btnSubir.setBounds(12, 217, 125, 23);
 		getContentPane().add(btnSubir);
+		
+		JButton btnRefresh = new JButton("Refrescar");
+		btnRefresh.addActionListener(new ActionListener() {
 
-		try {
-			listado = (File[]) obin.readObject();
-			if (listado.length == 0) {
-				System.out.println("El directorio esta vacio ");
-			} else {
-
-				ArrayList<File> lista = new ArrayList<File>();
-//				list.setBounds(10, 35, 110, 56);
-//				contentPane.add(list);
-				for (File f : listado) {
-					list.add(f.getName());
-					System.out.println(f.getName());
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					dos.writeUTF("List");
+					dos.flush();
+					System.out.println("aaaaaaaaaa");
+					listar(obin);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
+				
 			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		});
+		btnRefresh.setBounds(371, 31, 89, 23);
+		getContentPane().add(btnRefresh);
 
+		listar(obin);
 	}
 
 	public void descargar(int a, Socket s, DataInputStream dis, DataOutputStream dos) {
@@ -133,26 +137,25 @@ public class Login extends JFrame {
 		}
 
 	}
-
-	public void abrirExplorador(String path) { // abre el explorador en el path indicado
-
-		File file = new File("path");
-		Desktop desktop = Desktop.getDesktop();
+	
+	
+	public void listar(ObjectInputStream obin) {
 		try {
-			if (file.exists()) {
-				desktop.open(file);
-			} else
-				System.err.println("No se puede abrir el fichero o no existe");
-		} catch (IOException e) {
+			listado = (File[]) obin.readObject();
+			if (listado.length == 0) {
+				list.add("El directorio esta vacio ");
+			} else {
+
+				for (File f : listado) {
+					list.add(f.getName());
+					System.out.println(f.getName());
+				}
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	}
-
-	public static void abrirArchivo(String path) {
-
-		try {
-			Process builder = Runtime.getRuntime().exec("cmd /c start " + path);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

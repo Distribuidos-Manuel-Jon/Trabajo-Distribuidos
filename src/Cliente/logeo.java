@@ -97,6 +97,7 @@ public class logeo extends JFrame {
 					if(correcto) {
 						Login md = new Login(cliente,obin,dis,dos);
 						md.setVisible(true);
+						setVisible(false);
 					}else {
 						JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
 					}

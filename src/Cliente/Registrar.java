@@ -1,5 +1,6 @@
 package Cliente;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.HeadlessException;
 import java.awt.List;
@@ -50,6 +51,7 @@ public class Registrar extends JFrame{
 //	}
 	
 	public Registrar() {
+		setMinimumSize(new Dimension(800,600));
 		MetodoRegistrar r = new MetodoRegistrar();
 		getContentPane().setLayout(null);
 		
@@ -82,8 +84,9 @@ public class Registrar extends JFrame{
 							File f = new File(usuario);
 							f.mkdir();
 							File fich = new File(f.getAbsolutePath(),"Bienvenido.txt");
-							
-							
+							fich.createNewFile();
+							JOptionPane.showMessageDialog(null, "Usuario Registrado");
+							setVisible(false);
 						}  else {
 							JOptionPane.showMessageDialog(null, "Usuario o contraseña ya cogidos");
 						}
@@ -91,6 +94,9 @@ public class Registrar extends JFrame{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
