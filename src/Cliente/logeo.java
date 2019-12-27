@@ -28,7 +28,6 @@ public class logeo extends JFrame {
 	private String clave;
 	private String usuario;
 	private boolean correcto1;
-	private JLabel lblNewLabel_2;
 
 	/**
 	 * Launch the application.
@@ -51,14 +50,15 @@ public class logeo extends JFrame {
 	 */
 	
 	public logeo() {
+		setTitle("Inicio de Sesión");
 		Base b = new Base();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 363, 300);
+		setBounds(100, 100, 200, 301);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		setResizable(false);
 		JLabel lblNewLabel = new JLabel("Usuario");
 		lblNewLabel.setBounds(40, 35, 54, 16);
 		contentPane.add(lblNewLabel);
@@ -69,11 +69,11 @@ public class logeo extends JFrame {
 		txtUsuario.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Clave");
-		lblNewLabel_1.setBounds(40, 109, 56, 16);
+		lblNewLabel_1.setBounds(40, 99, 56, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		jpassClave = new JPasswordField();
-		jpassClave.setBounds(40, 145, 116, 22);
+		jpassClave.setBounds(40, 128, 116, 22);
 		contentPane.add(jpassClave);
 		
 		JButton btnIngresar = new JButton("Iniciar Sesión");
@@ -110,12 +110,8 @@ public class logeo extends JFrame {
 				
 			}
 		});
-		btnIngresar.setBounds(40, 195, 116, 25);
+		btnIngresar.setBounds(40, 167, 116, 39);
 		contentPane.add(btnIngresar);
-		
-		lblNewLabel_2 = new JLabel("Si no tienes usuario, registrate");
-		lblNewLabel_2.setBounds(181, 36, 158, 38);
-		contentPane.add(lblNewLabel_2);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(170, 243, 0, -194);
@@ -128,7 +124,7 @@ public class logeo extends JFrame {
 				r.setVisible(true);
 			}
 		});
-		btnRegistrar.setBounds(215, 85, 89, 23);
+		btnRegistrar.setBounds(40, 219, 116, 22);
 		contentPane.add(btnRegistrar);
 	}
 	

@@ -1,6 +1,7 @@
 package Cliente;
 
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,6 +47,7 @@ public class Login extends JFrame {
 		JLabel lblNewLabel = new JLabel("Archivos");
 		lblNewLabel.setBounds(10, 11, 49, 14);
 		getContentPane().add(lblNewLabel);
+		setMinimumSize(new Dimension(800,600));
 
 		list = new List();
 		list.setBounds(10, 31, 350, 161);
@@ -62,7 +64,7 @@ public class Login extends JFrame {
 				descargar(aux, s, dis, dos);
 			}
 		});
-		btnNewButton.setBounds(271, 205, 89, 23);
+		btnNewButton.setBounds(250, 217, 109, 23);
 		getContentPane().add(btnNewButton);
 
 		JButton btnSubir = new JButton("Subir archivos");
@@ -75,7 +77,7 @@ public class Login extends JFrame {
 				md.setVisible(true);
 			}
 		});
-		btnSubir.setBounds(10, 229, 89, 23);
+		btnSubir.setBounds(12, 217, 125, 23);
 		getContentPane().add(btnSubir);
 
 		try {

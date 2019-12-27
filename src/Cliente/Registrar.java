@@ -81,7 +81,9 @@ public class Registrar extends JFrame{
 						if(r.registrar(usuario, clave) == 1) {
 							File f = new File(usuario);
 							f.mkdir();
-							File fich = new File(f.getAbsolutePath())
+							File fich = new File(f.getAbsolutePath(),"Bienvenido.txt");
+							
+							
 						}  else {
 							JOptionPane.showMessageDialog(null, "Usuario o contraseña ya cogidos");
 						}

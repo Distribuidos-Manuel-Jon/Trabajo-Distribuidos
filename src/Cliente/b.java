@@ -22,9 +22,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import proyecto_nube.Filewalker;
-import javax.swing.JTree;
 
+import javax.swing.JTree;
 public class b extends JFrame{
 	
 	private File[] listado;
