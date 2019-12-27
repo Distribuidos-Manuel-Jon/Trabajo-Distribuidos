@@ -76,7 +76,7 @@ public class logeo extends JFrame {
 		jpassClave.setBounds(40, 145, 116, 22);
 		contentPane.add(jpassClave);
 		
-		JButton btnIngresar = new JButton("Iniciar Sesión");
+		JButton btnIngresar = new JButton("Iniciar SesiÃ³n");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				char claveChar[] = jpassClave.getPassword();
@@ -94,22 +94,16 @@ public class logeo extends JFrame {
 					System.out.println(usuario);				
 					dos.writeUTF(clave);
 					correcto = dis.readBoolean();
-					correcto1=correcto;
-					if(b.login(usuario, clave) == 1) {
+					if(correcto) {
 						Login md = new Login(cliente,obin,dis,dos);
 						md.setVisible(true);
-						
-						
 					}else {
-						JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+						JOptionPane.showMessageDialog(null, "Usuario o contraseÃ±a incorrecta");
 					}
 					
 				} catch (UnknownHostException e1) {
 					e1.printStackTrace();
 				} catch (IOException e1) {
-					e1.printStackTrace();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				

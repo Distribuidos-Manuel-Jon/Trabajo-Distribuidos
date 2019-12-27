@@ -33,7 +33,7 @@ public class MetodoRegistrar {
 
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection(URL, USR, PWD);
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/login?serverTimezone=UTC", "root", "0321");
 
 			Statement stm = con.createStatement();
 

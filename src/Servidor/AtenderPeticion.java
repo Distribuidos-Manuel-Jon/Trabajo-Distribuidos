@@ -4,13 +4,17 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 
-public class AtenderPeticion implements Runnable{
+import Cliente.Base;
+
+public class AtenderPeticion implements Runnable {
 
 	Socket cliente;
 
@@ -18,10 +22,8 @@ public class AtenderPeticion implements Runnable{
 		super();
 		this.cliente = c;
 	}
-	
+
 	public void run() {
-		String us = "usuario1";
-		String pa = "1234";
 		String usR = null;
 		String paR = null;
 		String comando = null;
@@ -30,6 +32,7 @@ public class AtenderPeticion implements Runnable{
 		boolean correcto = false;
 		File fich;
 		File[] listado;
+		Base b = new Base();
 
 		try (DataInputStream dis = new DataInputStream(cliente.getInputStream());
 				DataOutputStream dos = new DataOutputStream(cliente.getOutputStream());
@@ -39,17 +42,24 @@ public class AtenderPeticion implements Runnable{
 			usR = dis.readUTF();
 			System.out.println("Usuario recivido " + usR);
 			paR = dis.readUTF();
-			if (usR.equals(us) && paR.equals(paR)) {
-				correcto = true;
-			}
+			System.out.println(paR);
 
-			dos.writeBoolean(correcto);
-			dos.flush();
+			try {
+				if (b.login(usR, paR) == 1) {
+					correcto = true;
+					dos.writeBoolean(correcto);
+					dos.flush();
+				} else {
+					dos.writeBoolean(correcto);
+					dos.flush();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			fich = new File(usR);
-			if (!fich.exists()) {
-				fich.mkdir();
-			}
+
 			listado = fich.listFiles();
 			obout.writeObject(listado);
 			obout.flush();
@@ -92,14 +102,13 @@ public class AtenderPeticion implements Runnable{
 				}
 
 			}
-		} catch (IOException e) {
+		} catch (IOException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
 
-	}
-	}
+	
 
-	//a
+	} 
 
-
+}

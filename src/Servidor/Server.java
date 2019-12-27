@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-//a
+
 public class Server {
 
 	public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class Server {
 
 			while (true) {
 				try {
-					Socket cliente = server.accept(); 
+					Socket cliente = server.accept();
 					pool.execute(new AtenderPeticion(cliente));
 				} catch (IOException e) {
 					e.printStackTrace();
