@@ -53,7 +53,7 @@ public class MetodoRegistrar {
 			} catch (SQLException ex) {
 				ex.printStackTrace();
 			}
-
+			//a
 		}
 
 		return esta;

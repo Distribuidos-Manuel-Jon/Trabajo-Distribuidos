@@ -27,7 +27,7 @@ import proyecto_nube.Filewalker;
 public class Login extends JFrame {
 
 	private File[] listado;
-
+	//a
 	private List list;
 
 //	public static void main(String[] args) {
