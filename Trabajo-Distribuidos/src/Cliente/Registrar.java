@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import java.awt.Font;
 
 public class Registrar extends JFrame{
 	
@@ -51,27 +52,30 @@ public class Registrar extends JFrame{
 //	}
 	
 	public Registrar() {
-		setMinimumSize(new Dimension(800,600));
+		setTitle("Crear nuevo usuario");
+		setMinimumSize(new Dimension(300, 280));
 		MetodoRegistrar r = new MetodoRegistrar();
 		getContentPane().setLayout(null);
 		
 		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(23, 35, 49, 14);
+		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblUsuario.setBounds(23, 35, 62, 14);
 		getContentPane().add(lblUsuario);
 		
 		JLabel lblclave = new JLabel("Clave");
+		lblclave.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblclave.setBounds(23, 91, 62, 14);
 		getContentPane().add(lblclave);
 		
 		setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/Cliente/icono.png")));
 		
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(99, 32, 96, 20);
+		txtUsuario.setBounds(99, 32, 127, 20);
 		getContentPane().add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
 		jpassClave = new JPasswordField();
-		jpassClave.setBounds(99, 88, 96, 20);
+		jpassClave.setBounds(99, 88, 127, 20);
 		getContentPane().add(jpassClave);
 		
 		JButton btnRegistrar = new JButton("Registrar");
@@ -108,7 +112,7 @@ public class Registrar extends JFrame{
 				
 				
 		});
-		btnRegistrar.setBounds(106, 151, 89, 23);
+		btnRegistrar.setBounds(117, 153, 89, 23);
 		getContentPane().add(btnRegistrar);
 		
 		

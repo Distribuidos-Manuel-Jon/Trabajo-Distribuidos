@@ -89,7 +89,7 @@ public class AtenderPeticion implements Runnable {
 					System.out.println("Subiendo " + dir);
 					int aux2 = comando.lastIndexOf("\\");
 					String aux = comando.substring(aux2);
-					System.out.println(aux);
+					//System.out.println(aux);
 					File f = new File(dir);
 					System.out.println(f.getAbsolutePath());
 
@@ -99,7 +99,7 @@ public class AtenderPeticion implements Runnable {
 						int leidos;
 						while ((leidos = fis.read(buff)) != -1) {
 							fos.write(buff, 0, leidos);
-							System.out.println("aa");
+							//System.out.println("aa");
 						}
 					}
 					comando = dis.readUTF();

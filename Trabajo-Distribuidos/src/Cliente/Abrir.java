@@ -37,6 +37,7 @@ public class Abrir extends JFrame{
 		lblNewLabel.setBounds(10, 11, 364, 42);
 		getContentPane().add(lblNewLabel);
 		setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/Cliente/icono.png")));
+		setLocationRelativeTo(null);
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
