@@ -9,10 +9,7 @@ public class Cliente {
 		log.setVisible(true);
 
 	}
-	
-	
-	
-	
+			
 	
 
 }

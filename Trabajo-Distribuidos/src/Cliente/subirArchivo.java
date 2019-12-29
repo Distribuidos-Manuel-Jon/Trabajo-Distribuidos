@@ -44,19 +44,20 @@ public class subirArchivo extends JFrame {
 
 	public subirArchivo(Socket s, DataInputStream dis, DataOutputStream dos) {
 		// initComponents();
-		setBounds(100, 100, 400, 300);
+		setBounds(100, 100, 450, 200);
 		this.setLocationRelativeTo(this);
 
 		getContentPane().setLayout(null);
+		setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/Cliente/icono.png")));
 
 		JLabel lblNewLabel = new JLabel("Archivo a subir");
-		lblNewLabel.setBounds(10, 11, 49, 14);
+		lblNewLabel.setBounds(10, 11, 109, 14);
 		getContentPane().add(lblNewLabel);
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 36, 411, 109);
+		panel.setBounds(10, 36, 411, 104);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -65,7 +66,7 @@ public class subirArchivo extends JFrame {
 		panel.add(txtRuta);
 		txtRuta.setColumns(10);
 
-		JButton btnAbrir = new JButton("Abrir");
+		JButton btnAbrir = new JButton("Explorar");
 		btnAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {

@@ -10,6 +10,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -50,7 +51,9 @@ public class logeo extends JFrame {
 	 */
 	
 	public logeo() {
-		setTitle("Inicio de Sesión");
+		setTitle("Inicio de Sesion");
+		//setIconImage(new ImageIcon(getClass().getResource("/Cliente/icono.png")).getImage());
+		setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/Cliente/icono.png")));
 		Base b = new Base();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 200, 301);
@@ -76,7 +79,8 @@ public class logeo extends JFrame {
 		jpassClave.setBounds(40, 128, 116, 22);
 		contentPane.add(jpassClave);
 		
-		JButton btnIngresar = new JButton("Iniciar Sesión");
+		
+		JButton btnIngresar = new JButton("Iniciar Sesion");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				char claveChar[] = jpassClave.getPassword();
@@ -99,7 +103,7 @@ public class logeo extends JFrame {
 						md.setVisible(true);
 						setVisible(false);
 					}else {
-						JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+						JOptionPane.showMessageDialog(null, "Usuario o contrase�a incorrecta");
 					}
 					
 				} catch (UnknownHostException e1) {

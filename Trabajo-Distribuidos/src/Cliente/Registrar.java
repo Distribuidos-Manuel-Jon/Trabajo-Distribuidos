@@ -63,6 +63,8 @@ public class Registrar extends JFrame{
 		lblclave.setBounds(23, 91, 62, 14);
 		getContentPane().add(lblclave);
 		
+		setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/Cliente/icono.png")));
+		
 		txtUsuario = new JTextField();
 		txtUsuario.setBounds(99, 32, 96, 20);
 		getContentPane().add(txtUsuario);

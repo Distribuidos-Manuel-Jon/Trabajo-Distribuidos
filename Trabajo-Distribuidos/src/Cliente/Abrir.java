@@ -36,6 +36,7 @@ public class Abrir extends JFrame{
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 21));
 		lblNewLabel.setBounds(10, 11, 364, 42);
 		getContentPane().add(lblNewLabel);
+		setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/Cliente/icono.png")));
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {

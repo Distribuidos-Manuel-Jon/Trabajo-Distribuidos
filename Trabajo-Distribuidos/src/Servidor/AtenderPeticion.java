@@ -34,9 +34,9 @@ public class AtenderPeticion implements Runnable {
 		File[] listado;
 		Base b = new Base();
 
-		try (DataInputStream dis = new DataInputStream(cliente.getInputStream());
+		try {DataInputStream dis = new DataInputStream(cliente.getInputStream());
 				DataOutputStream dos = new DataOutputStream(cliente.getOutputStream());
-				ObjectOutputStream obout = new ObjectOutputStream(cliente.getOutputStream())) {
+				ObjectOutputStream obout = new ObjectOutputStream(cliente.getOutputStream()); 
 
 			System.out.println("Entrando al servidor");
 			usR = dis.readUTF();
@@ -113,9 +113,16 @@ public class AtenderPeticion implements Runnable {
 					System.out.println("Objeto enviado, espearando orden");
 					comando = dis.readUTF();
 				}
+				
+				if (comando.startsWith("END")) {
+					
+					dis.close();
+					dos.close();
+					obout.close();
+				
+				}
 			}
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
